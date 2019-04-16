@@ -1,0 +1,15 @@
+version: "3"
+services:
+  metrics:
+   image: dalongrong/promethues-jmespath-exporter
+   volumes: 
+   - "./conf/config.yaml:/etc/prometheus-jsonpath-exporter/config.yml"
+   ports:
+   - "9158:9158"
+   command: /etc/prometheus-jsonpath-exporter/config.yml
+  ws2rest:
+   image: dalongrong/simplews2rest
+   environment:
+   - "WSADDRESS=ws://10.6.204.204:7890/"
+   ports: 
+   - "3000:3000"
